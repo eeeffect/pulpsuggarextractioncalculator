@@ -33,7 +33,6 @@ fun SugarOutputChart(
             .padding(16.dp)
             .height(300.dp)
     ) {
-
         Text(
             text = title,
             color = MaterialTheme.colorScheme.primary,
@@ -248,6 +247,54 @@ fun ComparativeChart(viewModel: SugarCalculatorViewModel) {
                 val maxY = 15f
                 val step = (maxX - minX) / 100
 
+                // Малюємо підписи X осі
+                for (i in 0..4) {
+                    val xLabel = minX + i * (maxX - minX) / 4
+                    val xPos = padding + i * (width - 2 * padding) / 4
+
+                    drawLine(
+                        color = Color.Gray,
+                        start = Offset(xPos, height - padding),
+                        end = Offset(xPos, height - padding + 10),
+                        strokeWidth = 1f
+                    )
+
+                    drawContext.canvas.nativeCanvas.drawText(
+                        String.format("%.1f", xLabel),
+                        xPos,
+                        height - padding + 25,
+                        android.graphics.Paint().apply {
+                            color = android.graphics.Color.BLACK
+                            textSize = 30f
+                            textAlign = android.graphics.Paint.Align.CENTER
+                        }
+                    )
+                }
+
+                // Малюємо підписи Y осі
+                for (i in 0..4) {
+                    val yLabel = minY + i * (maxY - minY) / 4
+                    val yPos = height - padding - i * (height - 2 * padding) / 4
+
+                    drawLine(
+                        color = Color.Gray,
+                        start = Offset(padding, yPos),
+                        end = Offset(padding - 10, yPos),
+                        strokeWidth = 1f
+                    )
+
+                    drawContext.canvas.nativeCanvas.drawText(
+                        String.format("%.1f", yLabel),
+                        padding - 15,
+                        yPos + 10,
+                        android.graphics.Paint().apply {
+                            color = android.graphics.Color.BLACK
+                            textSize = 30f
+                            textAlign = android.graphics.Paint.Align.RIGHT
+                        }
+                    )
+                }
+
                 // Графік для режиму без повернення жомопресової води
                 val path1 = Path()
                 var x = minX
@@ -332,7 +379,7 @@ fun ComparativeChart(viewModel: SugarCalculatorViewModel) {
                     style = Stroke(width = 3f)
                 )
 
-                // Підписи та легенда
+                // Підписи осей
                 drawContext.canvas.nativeCanvas.drawText(
                     "Вміст цукрози, %",
                     width / 2,
@@ -343,6 +390,21 @@ fun ComparativeChart(viewModel: SugarCalculatorViewModel) {
                         textAlign = android.graphics.Paint.Align.CENTER
                     }
                 )
+
+                // Підпис вертикальної осі Y
+                drawContext.canvas.nativeCanvas.save()
+                drawContext.canvas.nativeCanvas.rotate(-90f, 20f, height / 2)
+                drawContext.canvas.nativeCanvas.drawText(
+                    "Вихід цукру, %",
+                    20f,
+                    height / 2,
+                    android.graphics.Paint().apply {
+                        color = android.graphics.Color.BLACK
+                        textSize = 30f
+                        textAlign = android.graphics.Paint.Align.CENTER
+                    }
+                )
+                drawContext.canvas.nativeCanvas.restore()
             }
         }
 

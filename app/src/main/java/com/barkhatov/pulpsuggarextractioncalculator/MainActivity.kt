@@ -177,7 +177,7 @@ fun ParametersTab(viewModel: SugarCalculatorViewModel) {
                 Slider(
                     value = viewModel.dryMatterInPressedPulp,
                     onValueChange = { viewModel.dryMatterInPressedPulp = it },
-                    valueRange = 14f..25f,
+                    valueRange = 14f..30f,
                     steps = 10
                 )
                 Text(
