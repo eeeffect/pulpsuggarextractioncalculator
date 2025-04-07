@@ -416,7 +416,21 @@ fun ComparativeChart(viewModel: SugarCalculatorViewModel) {
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             LegendItem(color = Color.Blue, text = "Без повернення")
+        }
+        Row(
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
             LegendItem(color = Color.Red, text = "З поверненням без очищення")
+        }
+        Row(
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
             LegendItem(color = Color.Green, text = "З поверненням з очищенням")
         }
     }
