@@ -1,4 +1,4 @@
-package com.barkhatov.pulpsuggarextractioncalculator
+package com.barkhatov.pulpsugarextractioncalculator
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
-import com.barkhatov.pulpsuggarextractioncalculator.ui.theme.SugarAppTheme
+import com.barkhatov.pulpsugarextractioncalculator.ui.theme.SugarAppTheme
 
 fun main() = application {
     val windowState = rememberWindowState()

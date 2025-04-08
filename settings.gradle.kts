@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "PulpSuggarExtractionCalculator"
+rootProject.name = "pulpsugarextractioncalculator"
 include(":app")

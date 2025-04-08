@@ -1,8 +1,8 @@
-package com.barkhatov.pulpsuggarextractioncalculator.ui.theme
+// androidMain/.../ui/theme/SugarAppTheme.android.kt
+package com.barkhatov.pulpsugarextractioncalculator.ui.theme
 
 import android.app.Activity
 import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -31,20 +31,21 @@ private val LightColorScheme = lightColorScheme(
     surface = SugarLightSurface
 )
 
+// Android-специфічна реалізація теми
 @Composable
-fun SugarAppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+actual fun SugarAppTheme(
+    darkTheme: Boolean,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
+
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
@@ -56,7 +57,10 @@ fun SugarAppTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = androidx.compose.material3.Typography(
+            bodyLarge = BodyLarge,
+            titleLarge = TitleLarge
+        ),
         content = content
     )
 }

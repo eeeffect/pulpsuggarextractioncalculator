@@ -1,4 +1,4 @@
-package com.barkhatov.pulpsuggarextractioncalculator
+package com.barkhatov.pulpsugarextractioncalculator
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background

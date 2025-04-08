@@ -73,11 +73,11 @@ kotlin {
 }
 
 android {
-    namespace = "com.barkhatov.pulpsuggarextractioncalculator"
+    namespace = "com.barkhatov.pulpsugarextractioncalculator"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.barkhatov.pulpsuggarextractioncalculator"
+        applicationId = "com.barkhatov.pulpsugarextractioncalculator"
         minSdk = 31
         targetSdk = 34
         versionCode = 1
@@ -114,11 +114,30 @@ android {
         }
     }
     buildToolsVersion = "35.0.0 rc4"
+
+    // Додаємо явні налаштування для Android source sets
+    sourceSets {
+        named("main") {
+            // Вказуємо, що маніфест знаходиться в androidMain
+            manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
+            // Вказуємо, що Java/Kotlin класи знаходяться в androidMain/kotlin
+            java.srcDirs("src/androidMain/kotlin")
+
+            // Вказуємо, що ресурси знаходяться в androidMain/res
+            res.srcDirs("src/androidMain/res")
+
+            // Додаємо інші необхідні ресурси
+            resources.srcDirs("src/androidMain/resources")
+        }
+
+
+    }
 }
 
 compose.desktop {
     application {
-        mainClass = "com.barkhatov.pulpsuggarextractioncalculator.MainDesktopKt"
+        mainClass = "com.barkhatov.pulpsugarextractioncalculator.MainDesktopKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)

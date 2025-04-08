@@ -1,4 +1,4 @@
-package com.barkhatov.pulpsuggarextractioncalculator.ui.theme
+package com.barkhatov.pulpsugarextractioncalculator.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -12,8 +12,3 @@ val SugarLightBackground = Color(0xFFF5F5F5)
 val SugarLightSurface = Color(0xFFFFFFFF)
 val SugarDarkBackground = Color(0xFF121212)
 val SugarDarkSurface = Color(0xFF1E1E1E)
-
-// Додаткові кольори для візуалізацій та індикаторів
-val SugarGreen = Color(0xFF4CAF50)
-val SugarRed = Color(0xFFE57373)
-val SugarYellow = Color(0xFFFFB74D)

@@ -1,4 +1,4 @@
-package com.barkhatov.pulpsuggarextractioncalculator
+package com.barkhatov.pulpsugarextractioncalculator
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

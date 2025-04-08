@@ -1,4 +1,4 @@
-package com.barkhatov.pulpsuggarextractioncalculator.ui.theme
+package com.barkhatov.pulpsugarextractioncalculator.ui.theme
 
 
 import androidx.compose.material3.Typography

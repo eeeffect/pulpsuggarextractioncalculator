@@ -1,4 +1,5 @@
 package com.barkhatov.pulpsuggarextractioncalculator
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,9 +15,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
-import com.barkhatov.pulpsuggarextractioncalculator.ui.theme.SugarAppTheme
+import com.barkhatov.pulpsugarextractioncalculator.ui.theme.SugarAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
