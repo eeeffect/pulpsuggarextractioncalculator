@@ -26,40 +26,44 @@ kotlin {
     }
 
     sourceSets {
-        // Використовуємо «getting» замість «creating» для commonMain,
-        // оскільки він вже створений Kotlin Multiplatform плагіном
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material3)
-                implementation(compose.ui)
+                // Видаляємо конфліктуючі залежності Material3 зі спільного коду
+                implementation("org.jetbrains.compose.runtime:runtime:1.5.10")
+                implementation("org.jetbrains.compose.foundation:foundation:1.5.10")
+                // Видаляємо material3 з commonMain, щоб уникнути конфліктів
+                // implementation("org.jetbrains.compose.material3:material3:1.5.10")
+                implementation("org.jetbrains.compose.ui:ui:1.5.10")
             }
         }
 
         // Android-специфічні залежності
         val androidMain by getting {
             dependencies {
+                // Android-специфічні залежності
                 implementation(libs.androidx.core.ktx)
                 implementation(libs.androidx.lifecycle.runtime.ktx)
                 implementation(libs.androidx.activity.compose)
-                implementation(platform(libs.androidx.compose.bom))
-                implementation(libs.androidx.ui)
-                implementation(libs.androidx.ui.graphics)
-                implementation(libs.androidx.ui.tooling.preview)
-                implementation(libs.androidx.material3)
+
+                // Використовуємо явні версії Compose для Android
+                implementation("androidx.compose.ui:ui:1.5.4")
+                implementation("androidx.compose.ui:ui-graphics:1.5.4")
+                implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
+                // Використовуємо конкретну версію Material3 для Android
+                implementation("androidx.compose.material3:material3:1.1.2")
             }
         }
 
-        // Desktop-специфічні залежності
         val desktopMain by getting {
             dependencies {
-                implementation(compose.desktop.currentOs)
+                // Desktop-специфічні залежності
+                implementation("org.jetbrains.compose.desktop:desktop:1.5.10")
+                // Додаємо Material3 для Desktop окремо з правильною версією
+                implementation("org.jetbrains.compose.material3:material3-desktop:1.5.10")
                 implementation(libs.skiko)
             }
         }
 
-        // Android тести
         val androidUnitTest by getting {
             dependencies {
                 implementation(libs.junit)
@@ -70,7 +74,7 @@ kotlin {
 
 android {
     namespace = "com.barkhatov.pulpsuggarextractioncalculator"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.barkhatov.pulpsuggarextractioncalculator"
@@ -109,6 +113,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildToolsVersion = "35.0.0 rc4"
 }
 
 compose.desktop {
